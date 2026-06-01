@@ -8,6 +8,7 @@ import styles from './Header.module.scss';
 const navLinks = [
   { anchor: 'services', label: 'Leistungen' },
   { anchor: 'about',    label: 'Über mich' },
+  { href: '/portfolio', label: 'Portfolio' },
   { anchor: 'contact',  label: 'Kontakt' },
 ];
 
@@ -18,8 +19,12 @@ export default function Header() {
 
   const handleLinkClick = () => setIsOpen(false);
 
-  const getHref = (anchor: string) =>
-    isHome ? `#${anchor}` : `/#${anchor}`;
+  const getLinkProps = (link: { anchor?: string; href?: string; label: string }) => {
+    if (link.href) {
+      return { href: link.href };
+    }
+    return { href: isHome ? `#${link.anchor}` : `/#${link.anchor}` };
+  };
 
   return (
     <nav className={styles.nav} aria-label="Hauptnavigation">
@@ -32,15 +37,15 @@ export default function Header() {
         id="nav-menu"
         role="list"
       >
-        {navLinks.map(({ anchor, label }) => (
-          <li key={anchor}>
-            <a
-              href={getHref(anchor)}
+        {navLinks.map((link) => (
+          <li key={link.label}>
+            <Link
+              {...getLinkProps(link)}
               className={styles.navLink}
               onClick={handleLinkClick}
             >
-              {label}
-            </a>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>
