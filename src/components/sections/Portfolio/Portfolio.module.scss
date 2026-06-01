@@ -1,0 +1,82 @@
+@use 'sass:map';
+@use '../../../../styles/settings' as s;
+
+.portfolio {
+  padding: map.get(s.$spacings, 'xl') 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 map.get(s.$spacings, 'md');
+}
+
+.projectTile {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: map.get(s.$spacings, 'lg');
+  display: flex;
+  flex-direction: column;
+  gap: map.get(s.$spacings, 'md');
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: rgba(s.$accent, 0.3);
+  }
+}
+
+.header {
+  text-align: left;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: map.get(s.$spacings, 'xs');
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.previewContainer {
+  position: relative;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  
+  &:hover {
+    .previewOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+.previewOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+
+  span {
+    background: s.$accent;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}

@@ -8,34 +8,23 @@ import styles from './Header.module.scss';
 const navLinks = [
   { anchor: 'services', label: 'Leistungen' },
   { anchor: 'about',    label: 'Über mich' },
-  { label: 'Portfolio', action: 'portfolio' },
+  { anchor: 'portfolio', label: 'Portfolio' },
   { anchor: 'contact',  label: 'Kontakt' },
 ];
 
-export default function Header({ onViewChange }: { onViewChange: (view: 'home' | 'portfolio') => void }) {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
 
-  const handleLinkClick = (action?: string) => {
-    setIsOpen(false);
-    if (action === 'portfolio') {
-      onViewChange('portfolio');
-    } else {
-      onViewChange('home');
-    }
-  };
+  const handleLinkClick = () => setIsOpen(false);
 
-  const getLinkProps = (link: { anchor?: string; href?: string; label: string; action?: string }) => {
-    if (link.action) {
-      return { href: '#', onClick: () => handleLinkClick(link.action) };
-    }
-    return { href: isHome ? `#${link.anchor}` : `/#${link.anchor}`, onClick: () => handleLinkClick() };
-  };
+  const getHref = (anchor: string) =>
+    isHome ? `#${anchor}` : `/#${anchor}`;
 
   return (
     <nav className={styles.nav} aria-label="Hauptnavigation">
-      <Link href="/" className={styles.logo} onClick={() => handleLinkClick()}>
+      <Link href="/" className={styles.logo}>
         Roman_.<span className={styles.logoDev}>dev</span>
       </Link>
 
@@ -44,14 +33,15 @@ export default function Header({ onViewChange }: { onViewChange: (view: 'home' |
         id="nav-menu"
         role="list"
       >
-        {navLinks.map((link) => (
-          <li key={link.label}>
-            <Link
-              {...getLinkProps(link)}
+        {navLinks.map(({ anchor, label }) => (
+          <li key={anchor}>
+            <a
+              href={getHref(anchor)}
               className={styles.navLink}
+              onClick={handleLinkClick}
             >
-              {link.label}
-            </Link>
+              {label}
+            </a>
           </li>
         ))}
       </ul>
