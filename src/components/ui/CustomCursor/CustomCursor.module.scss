@@ -1,5 +1,5 @@
-@use '../../../styles/settings' as s;
-@use '../../../styles/mixins' as m;
+@use '../../../styles/settings/_index' as s;
+@use '../../../styles/mixins/_index' as m;
 
 // Only shown for mouse/trackpad users, not touch
 .cursor {
@@ -16,7 +16,7 @@
     width 0.2s ease,
     height 0.2s ease,
     background-color 0.2s ease;
-  mix-blend-mode: difference; // More subtle than exclusion
+  mix-blend-mode: difference;
 
   @media (pointer: fine) {
     display: block;
