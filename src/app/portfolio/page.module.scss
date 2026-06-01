@@ -1,19 +1,20 @@
 @use '../../../styles/settings/colors' as c;
 @use '../../../styles/settings/spacings' as s;
+@use 'sass:map';
 
 .portfolio {
-  padding: s.$spacing-xl;
+  padding: map.get(s.$spacings, 'xl');
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: s.$spacing-md;
-  margin-top: s.$spacing-lg;
+  gap: map.get(s.$spacings, 'md');
+  margin-top: map.get(s.$spacings, 'lg');
 }
 
 .card {
-  padding: s.$spacing-md;
+  padding: map.get(s.$spacings, 'md');
   border: 1px solid c.$accent;
   border-radius: 8px;
 }
