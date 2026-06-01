@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
-import '../../styles/app.scss';
-import Header from '@/components/layout/Header/Header';
-import Footer from '@/components/layout/Footer/Footer';
-import CustomCursor from '@/components/ui/CustomCursor/CustomCursor';
+import '../../styles/globals.scss';
+import MainLayout from '@/components/layout/MainLayout/MainLayout';
 
 export const metadata: Metadata = {
   title: 'Roman — Workflow-Automatisierung & Web-Entwicklung aus Norddeutschland',
@@ -32,14 +30,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body>
-        <CustomCursor />
-        <div className="gridBg" aria-hidden="true" />
-        <a href="#main" className="skipLink">
-          Zum Inhalt springen
-        </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );
