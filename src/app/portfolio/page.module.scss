@@ -1,0 +1,19 @@
+@use '../../../styles/settings/colors' as c;
+@use '../../../styles/settings/spacings' as s;
+
+.portfolio {
+  padding: s.$spacing-xl;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: s.$spacing-md;
+  margin-top: s.$spacing-lg;
+}
+
+.card {
+  padding: s.$spacing-md;
+  border: 1px solid c.$accent;
+  border-radius: 8px;
+}
