@@ -13,24 +13,15 @@
 }
 
 .projectTile {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: map.get(s.$spacings, 'lg');
+  // Removed background, border, and padding to make it flush
   display: flex;
   flex-direction: column;
   gap: map.get(s.$spacings, 'md');
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-
-  &:hover {
-    border-color: rgba(s.$accent, 0.3);
-    background: rgba(255, 255, 255, 0.05);
-  }
 }
 
 .header {
   text-align: left;
-  padding: 4px 0; // Prevent cutoff
+  padding: 4px 0;
 }
 
 .title {
@@ -38,7 +29,7 @@
   font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: -0.01em;
-  line-height: 1.2; // Better for headings
+  line-height: 1.2;
 }
 
 .subtitle {
@@ -46,6 +37,7 @@
   font-size: 1.125rem;
   line-height: 1.6;
   max-width: 800px;
+  margin-bottom: map.get(s.$spacings, 'sm');
 }
 
 .previewContainer {
@@ -70,8 +62,7 @@
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 20; // Above iframe
-  // REMOVED pointer-events: none to capture clicks
+  z-index: 20;
   
   span {
     background: s.$accent;
