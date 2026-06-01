@@ -13,7 +13,6 @@
 }
 
 .projectTile {
-  // Removed background, border, and padding to make it flush
   display: flex;
   flex-direction: column;
   gap: map.get(s.$spacings, 'md');
@@ -46,7 +45,13 @@
   border-radius: 12px;
   overflow: hidden;
   
+  // Re-adding the aesthetic frame styles
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  
   &:hover {
+    border-color: rgba(s.$accent, 0.5);
     .previewOverlay {
       opacity: 1;
     }
