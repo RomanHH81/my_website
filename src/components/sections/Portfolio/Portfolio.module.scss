@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use "../../../../../styles/abstracts' as s;
+@use "../../../../styles/abstracts/index" as *;
 
 .portfolio {
   padding: map.get(s.$spacings, 'xl') 0;
