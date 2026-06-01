@@ -52,29 +52,10 @@
   position: relative;
   overflow: hidden;
   transition: background 0.3s;
-  cursor: none;
-
-  @include m.respond-to(md) {
-    cursor: auto;
-  }
+  cursor: auto; // Restored default cursor
 
   &:hover {
     background: s.$card-hover;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 0;
-    background: s.$accent;
-    transition: height 0.4s ease;
-  }
-
-  &:hover::before {
-    height: 100%;
   }
 }
 
