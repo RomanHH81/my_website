@@ -1,20 +1,97 @@
+@use 'sass:map';
 @use '../../../styles/settings/colors' as c;
 @use '../../../styles/settings/spacings' as s;
-@use 'sass:map';
+@use '../../../styles/settings/typography' as t;
 
 .portfolio {
-  padding: map.get(s.$spacings, 'xl');
+  padding: map.get(s.$spacings, 'xl') 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
-.grid {
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 map.get(s.$spacings, 'md');
+}
+
+.header {
+  margin-bottom: map.get(s.$spacings, 'lg');
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: map.get(s.$spacings, 'sm');
+  letter-spacing: -0.05em;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.125rem;
+}
+
+.projectSection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: map.get(s.$spacings, 'md');
-  margin-top: map.get(s.$spacings, 'lg');
+  grid-template-columns: 1fr;
+  gap: map.get(s.$spacings, 'lg');
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 350px 1fr;
+  }
 }
 
-.card {
-  padding: map.get(s.$spacings, 'md');
-  border: 1px solid c.$accent;
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: map.get(s.$spacings, 'sm');
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(c.$accent, 0.1);
+  color: c.$accent;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+
+.projectTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.projectDescription {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: map.get(s.$spacings, 'md');
+}
+
+.primaryAction {
+  display: inline-block;
+  padding: 12px 24px;
+  background: c.$accent;
+  color: white;
   border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(c.$accent, 0.3);
+  }
+}
+
+.previewWrapper {
+  width: 100%;
 }
