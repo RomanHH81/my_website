@@ -20,17 +20,6 @@ body {
   color: s.$text;
   font-family: s.$font-body;
   overflow-x: hidden;
-
-  // Custom cursor only for precise pointer devices (mouse), not touch
-  @media (pointer: fine) {
-    cursor: none;
-
-    a,
-    button,
-    [data-cursor-hover] {
-      cursor: none;
-    }
-  }
 }
 
 // ── Noise overlay ──────────────────────────────────────────────
