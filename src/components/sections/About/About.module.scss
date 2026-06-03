@@ -1,2 +1,174 @@
-@use "../../../../../styles/abstracts/index" as *;
-// ... (rest of the file)
+@use "../../../../styles/settings" as s;
+@use "../../../../styles/mixins" as m;
+
+.about {
+  padding: 8rem 4rem;
+  position: relative;
+  z-index: 1;
+  background: s.$surface;
+
+  @include m.respond-to(md) {
+    padding: 6rem 1.5rem;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: flex-start;
+
+  @include m.respond-to(md) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+.text {
+  p {
+    font-size: s.$fs-body;
+    line-height: s.$lh-relaxed;
+    color: s.$muted;
+    margin-bottom: 1.25rem;
+
+    strong {
+      color: s.$text;
+      font-weight: s.$fw-semibold;
+    }
+  }
+}
+
+.sectionLabel {
+  font-family: s.$font-mono;
+  font-size: 0.7rem;
+  color: s.$accent;
+  letter-spacing: s.$ls-3xl;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: s.$fw-extrabold;
+  letter-spacing: -0.03em;
+  line-height: s.$lh-heading;
+  margin-bottom: 2rem;
+}
+
+.stackList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  list-style: none;
+  padding: 0;
+
+  @include m.respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stackItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: s.$font-mono;
+  font-size: 0.72rem;
+  color: s.$muted;
+  letter-spacing: s.$ls-md;
+
+  &::before {
+    content: "▸";
+    color: s.$accent;
+    font-size: 0.6rem;
+  }
+}
+
+.visual {
+  position: relative;
+}
+
+.terminal {
+  background: s.$terminal-bg;
+  border: 1px solid s.$border;
+  font-family: s.$font-mono;
+  font-size: 0.78rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.terminalBar {
+  background: s.$border;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dotRed { background: s.$dot-red; }
+.dotYellow { background: s.$dot-yellow; }
+.dotGreen { background: s.$dot-green; }
+
+.terminalTitle {
+  font-size: 0.65rem;
+  color: s.$muted;
+  letter-spacing: s.$ls-lg;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terminalBody {
+  padding: 1.5rem;
+  line-height: 2;
+}
+
+.tPrompt { color: s.$accent; }
+.tCmd { color: s.$text; }
+.tOutput { color: s.$muted; }
+.tHighlight { color: s.$accent2; }
+.tSuccess { color: s.$accent; }
+
+.cursorBlink {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: s.$accent;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &:global(.visible) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

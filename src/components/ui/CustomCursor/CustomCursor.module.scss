@@ -1,5 +1,5 @@
-@use "../../../../../styles/abstracts/index" as *;
-@use "../../../../../styles/abstracts/index" as *;
+@use "../../../../styles/settings" as s;
+@use "../../../../styles/mixins" as m;
 
 // Only shown for mouse/trackpad users, not touch
 .cursor {

@@ -1,16 +1,17 @@
-@use "../../../../../styles/abstracts/index" as *;
+@use "../../../../styles/settings" as s;
+@use "../../../../styles/mixins" as m;
 
 .footer {
-  border-top: 1px solid $border;
+  border-top: 1px solid s.$border;
   padding: 2rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: $surface;
+  background: s.$surface;
   position: relative;
   z-index: 1;
 
-  @include respond-to(md) {
+  @include m.respond-to(md) {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
@@ -19,20 +20,20 @@
 }
 
 .left {
-  font-family: $font-mono;
+  font-family: s.$font-mono;
   font-size: 0.7rem;
-  color: $muted;
-  letter-spacing: $ls-md;
+  color: s.$muted;
+  letter-spacing: s.$ls-md;
 }
 
 .right {
-  font-family: $font-mono;
+  font-family: s.$font-mono;
   font-size: 0.7rem;
-  color: $muted;
-  letter-spacing: $ls-md;
+  color: s.$muted;
+  letter-spacing: s.$ls-md;
 
   a {
-    color: $accent;
+    color: s.$accent;
     text-decoration: none;
   }
 }

@@ -1,57 +1,94 @@
-@use 'sass:map';
-@use "../../../../../styles/abstracts/index" as *;
+@use "../../../../styles/settings" as s;
+@use "../../../../styles/mixins" as m;
 
 .portfolio {
-  padding: map.get(s.$spacings, 'xl') 0;
+  padding: 8rem 4rem;
+  position: relative;
+  z-index: 1;
+  background: s.$surface;
+
+  @include m.respond-to(md) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 map.get(s.$spacings, 'md');
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 4rem;
 }
 
-.projectTile {
+.sectionLabel {
+  font-family: s.$font-mono;
+  font-size: 0.7rem;
+  color: s.$accent;
+  letter-spacing: s.$ls-3xl;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: s.$fw-extrabold;
+  letter-spacing: -0.03em;
+  line-height: s.$lh-heading;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: s.$border;
+  border: 1px solid s.$border;
+
+  @include m.respond-to(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: s.$card;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
-  gap: map.get(s.$spacings, 'md');
+  transition: background 0.3s;
+
+  &:hover {
+    background: s.$card-hover;
+  }
 }
 
-.header {
-  text-align: left;
-  padding: 4px 0;
+.projectHeader {
+  margin-bottom: 2rem;
 }
 
 .title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+  font-size: s.$fs-2xl;
+  font-weight: s.$fw-bold;
+  margin-bottom: 0.75rem;
+  color: s.$text;
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1.125rem;
-  line-height: 1.6;
-  max-width: 800px;
-  margin-bottom: map.get(s.$spacings, 'sm');
+  font-size: s.$fs-body;
+  line-height: s.$lh-body;
+  color: s.$muted;
+  margin-bottom: 2rem;
 }
 
 .previewContainer {
   position: relative;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  
-  // Re-adding the aesthetic frame styles
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  margin-top: auto;
+  border: 1px solid s.$border;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   
   &:hover {
-    border-color: rgba(s.$accent, 0.5);
+    border-color: rgba(s.$accent, 0.3);
     .previewOverlay {
       opacity: 1;
     }
@@ -61,7 +98,7 @@
 .previewOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,12 +108,13 @@
   
   span {
     background: s.$accent;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 100px;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    color: s.$black;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: s.$fw-bold;
+    font-size: 0.8rem;
+    font-family: s.$font-mono;
+    text-transform: uppercase;
     transform: translateY(10px);
     transition: transform 0.3s ease;
   }

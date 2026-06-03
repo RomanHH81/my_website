@@ -1,32 +1,78 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import styles from './Portfolio.module.scss';
 import PVPreview from '@/components/ui/PVPreview/PVPreview';
 
+const projects = [
+  {
+    id: '01',
+    title: 'PV Rechner',
+    desc: 'Komplexer Rechner für PV-Anlagen: Visualisierung von Amortisation, Eigenverbrauch und CO2-Ersparnis.',
+    url: 'https://pv-rechner-h6s3.vercel.app/dashboard',
+  },
+  {
+    id: '02',
+    title: 'Projekt 2 (Placeholder)',
+    desc: 'Hier kommt bald ein weiteres Projekt, das ebenfalls deine Automatisierungs- oder Infrastruktur-Fähigkeiten zeigt.',
+    url: '#',
+  },
+];
+
 export default function Portfolio() {
-  const openProject = () => {
-    window.open('https://pv-rechner-h6s3.vercel.app/dashboard', '_blank', 'noopener,noreferrer');
-  };
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.12 },
+    );
+
+    const reveals = sectionRef.current?.querySelectorAll('.reveal') ?? [];
+    reveals.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="portfolio" className={styles.portfolio}>
-      <div className={styles.container}>
-        <div className={styles.projectTile}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>PV Rechner</h2>
-            <p className={styles.subtitle}>
-              Ein komplexer Rechner für Photovoltaik-Anlagen, der Amortisation, 
-              Eigenverbrauchsanteil und CO2-Ersparnis in Echtzeit visualisiert.
-            </p>
-          </div>
-          
-          <div className={styles.previewContainer} onClick={openProject} role="button" aria-label="Projekt öffnen">
-            <div className={styles.previewOverlay}>
-              <span>Vollversion öffnen</span>
-            </div>
-            <PVPreview />
-          </div>
+    <section
+      id="portfolio"
+      className={styles.portfolio}
+      aria-labelledby="portfolio-heading"
+      ref={sectionRef}
+    >
+      <div className={`${styles.sectionHeader} reveal`}>
+        <div>
+          <div className={styles.sectionLabel} aria-hidden="true">Projekte</div>
+          <h2 className={styles.sectionTitle} id="portfolio-heading">Portfolio</h2>
         </div>
+      </div>
+
+
+      <div className={styles.grid}>
+        {projects.map(({ id, title, desc, url }) => (
+          <article
+            key={id}
+            className={`${styles.card} reveal`}
+            onClick={() => url !== '#' && window.open(url, '_blank', 'noopener,noreferrer')}
+          >
+            <div className={styles.projectHeader}>
+              <h3 className={styles.title}>{title}</h3>
+              <p className={styles.subtitle}>{desc}</p>
+            </div>
+
+            <div className={styles.previewContainer} role="button" aria-label={`Projekt ${title} öffnen`}>
+              <div className={styles.previewOverlay}>
+                <span>{url !== '#' ? 'Vollversion öffnen' : 'Bald verfügbar'}</span>
+              </div>
+              <PVPreview />
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
