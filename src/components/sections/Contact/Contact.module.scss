@@ -2,14 +2,7 @@
 @use "../../../../styles/mixins" as m;
 
 .contact {
-  padding: 8rem 4rem;
-  position: relative;
-  z-index: 1;
-
-  @include m.respond-to(md) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+  // Padding now handled by Section component
 }
 
 .inner {
@@ -18,16 +11,14 @@
   text-align: center;
 }
 
-.sectionLabel {
-  display: block;
-  font-family: s.$font-mono;
-  font-size: 0.7rem;
-  color: s.$accent;
-  letter-spacing: s.$ls-3xl;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
+.contactWrapper {
+  background: s.$card;
+  border: 1px solid s.$border;
+  padding: 2rem;
 }
 
+// NOTE: Headline and Label are currently being styled differently in Section component.
+// We may need to adapt these or override them to maintain the look.
 .headline {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: s.$fw-extrabold;
@@ -40,7 +31,7 @@
   font-size: s.$fs-lg;
   color: s.$muted;
   line-height: s.$lh-relaxed;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .form {
@@ -158,5 +149,18 @@
     color: s.$accent;
     letter-spacing: s.$ls-lg;
     text-transform: uppercase;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+
+  &:global(.visible) {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

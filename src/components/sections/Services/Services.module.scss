@@ -2,37 +2,7 @@
 @use "../../../../styles/mixins" as m;
 
 .services {
-  padding: 8rem 4rem;
-  position: relative;
-  z-index: 1;
-
-  @include m.respond-to(md) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-.sectionHeader {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-}
-
-.sectionLabel {
-  font-family: s.$font-mono;
-  font-size: 0.7rem;
-  color: s.$accent;
-  letter-spacing: s.$ls-3xl;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-
-.sectionTitle {
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  font-weight: s.$fw-extrabold;
-  letter-spacing: -0.03em;
-  line-height: s.$lh-heading;
+  // Padding and sectionHeader are now handled by the Section component
 }
 
 .grid {
@@ -48,7 +18,7 @@
 
 .card {
   background: s.$card;
-  padding: 3rem;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
   transition: background 0.3s;

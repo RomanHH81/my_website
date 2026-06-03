@@ -2,38 +2,15 @@
 @use "../../../../styles/mixins" as m;
 
 .portfolio {
-  padding: 8rem 4rem;
-  position: relative;
-  z-index: 1;
-  background: s.$surface;
-
-  @include m.respond-to(md) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+  // Padding and header structure now handled by Section component
 }
 
-.sectionHeader {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-}
-
-.sectionLabel {
-  font-family: s.$font-mono;
-  font-size: 0.7rem;
-  color: s.$accent;
-  letter-spacing: s.$ls-3xl;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-
-.sectionTitle {
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  font-weight: s.$fw-extrabold;
-  letter-spacing: -0.03em;
-  line-height: s.$lh-heading;
+.sectionSub {
+  font-size: s.$fs-lg;
+  color: s.$muted;
+  line-height: s.$lh-relaxed;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
 }
 
 .grid {
@@ -50,7 +27,7 @@
 
 .card {
   background: s.$card;
-  padding: 3rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   transition: background 0.3s;
@@ -86,7 +63,7 @@
   margin-top: auto;
   border: 1px solid s.$border;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  
+
   &:hover {
     border-color: rgba(s.$accent, 0.3);
     .previewOverlay {
@@ -105,7 +82,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 20;
-  
+
   span {
     background: s.$accent;
     color: s.$black;

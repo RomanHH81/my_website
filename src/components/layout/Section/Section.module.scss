@@ -1,0 +1,39 @@
+@use "../../../../styles/settings" as s;
+@use "../../../../styles/mixins" as m;
+
+.section {
+  padding: 2rem 4rem;
+  position: relative;
+  z-index: 1;
+
+  @include m.respond-to(md) {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.sectionBody > * + * {
+  margin-top: 1.5rem;
+}
+
+.sectionLabel {
+  font-family: s.$font-mono;
+  font-size: 0.7rem;
+  color: s.$accent;
+  letter-spacing: s.$ls-3xl;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: s.$fw-extrabold;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+}

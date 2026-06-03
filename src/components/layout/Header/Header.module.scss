@@ -10,13 +10,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 4rem;
+  padding: 0.75rem 4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
   background: s.$nav-bg;
 
   @include m.respond-to(md) {
-    padding: 1.25rem 1.5rem;
+    padding: 0.75rem 1.5rem;
   }
 }
 
@@ -35,7 +35,7 @@
 
 .navList {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
   list-style: none;
 
   @include m.respond-to(md) {
@@ -97,11 +97,13 @@
     width: 22px;
     height: 2px;
     background: s.$accent;
-    transition: transform 0.3s, opacity 0.2s;
+    transition:
+      transform 0.3s,
+      opacity 0.2s;
     border-radius: 1px;
   }
 
-  &[aria-expanded='true'] {
+  &[aria-expanded="true"] {
     span:nth-child(1) {
       transform: rotate(45deg) translate(0, 8px);
     }

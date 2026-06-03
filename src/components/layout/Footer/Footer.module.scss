@@ -31,9 +31,25 @@
   font-size: 0.7rem;
   color: s.$muted;
   letter-spacing: s.$ls-md;
+}
 
-  a {
-    color: s.$accent;
-    text-decoration: none;
+.link {
+  background: none;
+  border: none;
+  color: s.$accent;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    text-decoration: underline;
   }
+}
+
+.sep {
+  color: s.$muted;
 }

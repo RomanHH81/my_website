@@ -2,29 +2,7 @@
 @use "../../../../styles/mixins" as m;
 
 .about {
-  padding: 8rem 4rem;
-  position: relative;
-  z-index: 1;
-  background: s.$surface;
-
-  @include m.respond-to(md) {
-    padding: 6rem 1.5rem;
-  }
-}
-
-.sectionHeader {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+  // Padding and header structure now handled by Section component
 }
 
 .grid {
@@ -32,10 +10,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
   align-items: flex-start;
+  background: s.$card;
+  border: 1px solid s.$border;
+  padding: 2rem;
 
   @include m.respond-to(md) {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 2rem;
+    padding: 1.5rem;
   }
 }
 
@@ -51,23 +33,6 @@
       font-weight: s.$fw-semibold;
     }
   }
-}
-
-.sectionLabel {
-  font-family: s.$font-mono;
-  font-size: 0.7rem;
-  color: s.$accent;
-  letter-spacing: s.$ls-3xl;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-
-.sectionTitle {
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  font-weight: s.$fw-extrabold;
-  letter-spacing: -0.03em;
-  line-height: s.$lh-heading;
-  margin-bottom: 2rem;
 }
 
 .stackList {
@@ -126,9 +91,15 @@
   border-radius: 50%;
 }
 
-.dotRed { background: s.$dot-red; }
-.dotYellow { background: s.$dot-yellow; }
-.dotGreen { background: s.$dot-green; }
+.dotRed {
+  background: s.$dot-red;
+}
+.dotYellow {
+  background: s.$dot-yellow;
+}
+.dotGreen {
+  background: s.$dot-green;
+}
 
 .terminalTitle {
   font-size: 0.65rem;
@@ -143,11 +114,21 @@
   line-height: 2;
 }
 
-.tPrompt { color: s.$accent; }
-.tCmd { color: s.$text; }
-.tOutput { color: s.$muted; }
-.tHighlight { color: s.$accent2; }
-.tSuccess { color: s.$accent; }
+.tPrompt {
+  color: s.$accent;
+}
+.tCmd {
+  color: s.$text;
+}
+.tOutput {
+  color: s.$muted;
+}
+.tHighlight {
+  color: s.$accent2;
+}
+.tSuccess {
+  color: s.$accent;
+}
 
 .cursorBlink {
   display: inline-block;
@@ -159,13 +140,17 @@
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 
   &:global(.visible) {
     opacity: 1;
