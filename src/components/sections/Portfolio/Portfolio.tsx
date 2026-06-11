@@ -15,7 +15,13 @@ const projects = [
   },
   {
     id: "02",
-    title: "Projekt 2 (Placeholder)",
+    title: "Freizeit-Portal",
+    desc: "Plattform zur Planung und Organisation von Freizeitaktivitäten.",
+    url: "https://freizeit-g1ctnlsgd-romanhh81s-projects.vercel.app",
+  },
+  {
+    id: "03",
+    title: "Projekt 3 (Placeholder)",
     desc: "Hier kommt bald ein weiteres Projekt, das ebenfalls deine Automatisierungs- oder Infrastruktur-Fähigkeiten zeigt.",
     url: "#",
   },

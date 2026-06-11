@@ -1,6 +1,7 @@
 # Project Rules
 
 ## Updates
+- [2026-06-11] Added 'Freizeit-Portal' to Portfolio section.
 - [2026-06-11] Applied 8px border-radius to Impressum/Datenschutz modal to match the site's design system.
 - [2026-06-11] Reverted to text-based branding 'PRIMAFLOW' in the Header for cleaner aesthetics, removing the SVG logo.
 - [2026-06-11] Rebranding to 'Primaflow'.
