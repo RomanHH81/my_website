@@ -27,7 +27,8 @@ export default function Header() {
   return (
     <nav className={styles.nav} aria-label="Hauptnavigation">
       <Link href="/" className={styles.logoLink}>
-        <img src="/logo/logo.svg" alt="Primaflow Logo" className={styles.logo} />
+        <span className={styles.brandBold}>PRIMA</span>
+        <span className={styles.brandRegular}>FLOW</span>
       </Link>
 
       <div className={styles.navRight}>

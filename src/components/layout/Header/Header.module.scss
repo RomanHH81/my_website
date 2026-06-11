@@ -21,14 +21,23 @@
 }
 
 .logoLink {
+  font-family: s.$font-body;
+  font-size: s.$fs-lg;
+  color: s.$text;
+  text-decoration: none;
   display: flex;
   align-items: center;
+  gap: 0;
 }
 
-.logo {
-  height: 40px;
-  width: auto;
-  display: block;
+.brandBold {
+  font-weight: s.$fw-extrabold;
+  color: s.$text;
+}
+
+.brandRegular {
+  font-weight: s.$fw-regular;
+  color: s.$muted;
 }
 
 .navRight {

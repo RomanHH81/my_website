@@ -1,7 +1,7 @@
 # Project Rules
 
 ## Updates
-- [2026-06-11] Integrated updated custom SVG logo from `public/logo/logo.svg` in Header, replacing text-based branding.
+- [2026-06-11] Reverted to text-based branding 'PRIMAFLOW' in the Header for cleaner aesthetics, removing the SVG logo.
 - [2026-06-11] Rebranding to 'Primaflow'.
 - [2026-06-11] New slogan: 'Primaflow – Komplexe Systeme, einfach gelöst.'
 - [2026-06-11] Updated color scheme to Cyber-Blue with violet and turquoise accents.
