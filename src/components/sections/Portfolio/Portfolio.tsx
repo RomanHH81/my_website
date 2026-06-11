@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Section from "@/components/layout/Section/Section";
 import { Card, Text, Flex, Inset, Box } from "@radix-ui/themes";
 import styles from "./Portfolio.module.scss";
+import PVPreview from "@/components/ui/PVPreview/PVPreview";
 
 const projects = [
   {
@@ -11,12 +12,14 @@ const projects = [
     title: "PV Rechner",
     desc: "Komplexer Rechner für PV-Anlagen: Visualisierung von Amortisation, Eigenverbrauch und CO2-Ersparnis.",
     url: "https://pv-rechner-h6s3.vercel.app/dashboard",
+    component: <PVPreview />,
   },
   {
     id: "02",
     title: "Freizeit-Portal",
     desc: "Plattform zur Planung und Organisation von Freizeitaktivitäten.",
     url: "https://freizeit-g1ctnlsgd-romanhh81s-projects.vercel.app",
+    component: <div className={styles.previewPlaceholder}>Vorschau nicht verfügbar</div>,
   },
   {
     id: "03",
@@ -54,7 +57,7 @@ export default function Portfolio() {
       className={styles.portfolio}
     >
       <div className={styles.grid} ref={sectionRef}>
-        {projects.map(({ id, title, desc, url, isPlaceholder }) => (
+        {projects.map(({ id, title, desc, url, isPlaceholder, component }) => (
           <article
             key={id}
             className={`${styles.cardWrapper} reveal`}
@@ -93,9 +96,7 @@ export default function Portfolio() {
                         <div className={styles.previewOverlay}>
                           <span>Vollversion öffnen</span>
                         </div>
-                        <div className={styles.previewPlaceholder}>
-                          Vorschau für: {title}
-                        </div>
+                        {component}
                       </>
                     )}
                   </div>
