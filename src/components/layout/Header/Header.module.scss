@@ -20,24 +20,15 @@
   }
 }
 
-.logo {
-  font-family: s.$font-body;
-  font-size: s.$fs-lg;
-  color: s.$text;
-  text-decoration: none;
+.logoLink {
   display: flex;
   align-items: center;
-  gap: 0;
+}
 
-  .brandBold {
-    font-weight: s.$fw-extrabold;
-    color: s.$text;
-  }
-
-  .brandRegular {
-    font-weight: s.$fw-regular;
-    color: s.$muted;
-  }
+.logo {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 .navRight {
