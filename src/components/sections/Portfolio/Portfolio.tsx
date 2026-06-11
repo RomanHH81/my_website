@@ -18,7 +18,7 @@ const projects = [
     id: "02",
     title: "Freizeit-Portal",
     desc: "Plattform zur Planung und Organisation von Freizeitaktivitäten.",
-    url: "https://freizeit-g1ctnlsgd-romanhh81s-projects.vercel.app",
+    url: "https://freizeit-app-sigma.vercel.app/en",
     component: <div className={styles.previewPlaceholder}>Vorschau nicht verfügbar</div>,
   },
   {
