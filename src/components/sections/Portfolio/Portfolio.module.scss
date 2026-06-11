@@ -35,18 +35,41 @@
   margin-bottom: 1rem;
 }
 
-.previewContainer {
+.previewContainer, .placeholderContainer {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid s.$border;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.previewContainer {
   &:hover {
     .previewOverlay {
       opacity: 1;
     }
   }
+}
+
+.placeholderContainer {
+  background: var(--gray-3);
+  border-style: dashed;
+}
+
+.placeholderContent {
+  text-align: center;
+  padding: 1rem;
+  color: var(--gray-11);
+}
+
+.previewPlaceholder {
+  color: var(--gray-11);
+  font-family: s.$font-mono;
+  font-size: 0.8rem;
 }
 
 .previewOverlay {

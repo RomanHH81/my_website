@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Section from "@/components/layout/Section/Section";
 import { Card, Text, Flex, Inset, Box } from "@radix-ui/themes";
 import styles from "./Portfolio.module.scss";
-import PVPreview from "@/components/ui/PVPreview/PVPreview";
 
 const projects = [
   {
@@ -21,9 +20,10 @@ const projects = [
   },
   {
     id: "03",
-    title: "Projekt 3 (Placeholder)",
-    desc: "Hier kommt bald ein weiteres Projekt, das ebenfalls deine Automatisierungs- oder Infrastruktur-Fähigkeiten zeigt.",
+    title: "Dein Projekt hier?",
+    desc: "Ich freue mich darauf, gemeinsam mit dir die nächste digitale Lösung zu entwickeln. Lass uns sprechen!",
     url: "#",
+    isPlaceholder: true,
   },
 ];
 
@@ -54,7 +54,7 @@ export default function Portfolio() {
       className={styles.portfolio}
     >
       <div className={styles.grid} ref={sectionRef}>
-        {projects.map(({ id, title, desc, url }) => (
+        {projects.map(({ id, title, desc, url, isPlaceholder }) => (
           <article
             key={id}
             className={`${styles.cardWrapper} reveal`}
@@ -79,16 +79,25 @@ export default function Portfolio() {
 
                 <Inset clip="padding-box" side="bottom" pb="current">
                   <div
-                    className={styles.previewContainer}
+                    className={isPlaceholder ? styles.placeholderContainer : styles.previewContainer}
                     role="button"
-                    aria-label={`Projekt ${title} öffnen`}
+                    aria-label={isPlaceholder ? "Kontakt aufnehmen" : `Projekt ${title} öffnen`}
                   >
-                    <div className={styles.previewOverlay}>
-                      <span>
-                        {url !== "#" ? "Vollversion öffnen" : "Bald verfügbar"}
-                      </span>
-                    </div>
-                    <PVPreview />
+                    {isPlaceholder ? (
+                      <div className={styles.placeholderContent}>
+                        <Text size="3" weight="medium">Bereit für eine Zusammenarbeit?</Text>
+                        <Text size="2" color="gray">Klicke hier, um mich zu kontaktieren.</Text>
+                      </div>
+                    ) : (
+                      <>
+                        <div className={styles.previewOverlay}>
+                          <span>Vollversion öffnen</span>
+                        </div>
+                        <div className={styles.previewPlaceholder}>
+                          Vorschau für: {title}
+                        </div>
+                      </>
+                    )}
                   </div>
                 </Inset>
               </Flex>
