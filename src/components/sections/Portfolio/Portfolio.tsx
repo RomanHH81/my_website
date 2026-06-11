@@ -5,6 +5,7 @@ import Section from "@/components/layout/Section/Section";
 import { Card, Text, Flex, Inset, Box } from "@radix-ui/themes";
 import styles from "./Portfolio.module.scss";
 import PVPreview from "@/components/ui/PVPreview/PVPreview";
+import FreizeitPreview from "@/components/ui/FreizeitPreview/FreizeitPreview";
 
 const projects = [
   {
@@ -19,7 +20,7 @@ const projects = [
     title: "Freizeit-Portal",
     desc: "Plattform zur Planung und Organisation von Freizeitaktivitäten.",
     url: "https://freizeit-app-sigma.vercel.app/en",
-    component: <div className={styles.previewPlaceholder}>Vorschau nicht verfügbar</div>,
+    component: <FreizeitPreview />,
   },
   {
     id: "03",
