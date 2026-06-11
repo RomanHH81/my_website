@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Section from "@/components/layout/Section/Section";
+import { Card, Text, Flex, Inset, Box } from "@radix-ui/themes";
 import styles from "./Portfolio.module.scss";
 import PVPreview from "@/components/ui/PVPreview/PVPreview";
 
@@ -50,28 +51,42 @@ export default function Portfolio() {
         {projects.map(({ id, title, desc, url }) => (
           <article
             key={id}
-            className={`${styles.card} reveal`}
-            onClick={() =>
-              url !== "#" && window.open(url, "_blank", "noopener,noreferrer")
-            }
+            className={`${styles.cardWrapper} reveal`}
           >
-            <div className={styles.projectHeader}>
-              <h3 className={styles.title}>{title}</h3>
-              <p className={styles.subtitle}>{desc}</p>
-            </div>
-
-            <div
-              className={styles.previewContainer}
-              role="button"
-              aria-label={`Projekt ${title} öffnen`}
+            <Card 
+              size="3" 
+              variant="surface" 
+              className={styles.card}
+              onClick={() =>
+                url !== "#" && window.open(url, "_blank", "noopener,noreferrer")
+              }
             >
-              <div className={styles.previewOverlay}>
-                <span>
-                  {url !== "#" ? "Vollversion öffnen" : "Bald verfügbar"}
-                </span>
-              </div>
-              <PVPreview />
-            </div>
+              <Flex direction="column" gap="4" height="100%">
+                <Box>
+                  <Text size="5" weight="bold" as="div" className={styles.title}>
+                    {title}
+                  </Text>
+                  <Text size="2" color="gray" className={styles.subtitle}>
+                    {desc}
+                  </Text>
+                </Box>
+
+                <Inset clip="padding-box" side="bottom" pb="current">
+                  <div
+                    className={styles.previewContainer}
+                    role="button"
+                    aria-label={`Projekt ${title} öffnen`}
+                  >
+                    <div className={styles.previewOverlay}>
+                      <span>
+                        {url !== "#" ? "Vollversion öffnen" : "Bald verfügbar"}
+                      </span>
+                    </div>
+                    <PVPreview />
+                  </div>
+                </Inset>
+              </Flex>
+            </Card>
           </article>
         ))}
       </div>

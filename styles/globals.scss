@@ -16,10 +16,16 @@ html {
 }
 
 body {
-  background: s.$bg;
-  color: s.$text;
+  background-color: var(--color-background);
+  color: var(--color-text-main, var(--color-text));
   font-family: s.$font-body;
   overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+// Ensure the root container takes full height
+#main {
+  min-height: 100vh;
 }
 
 // ── Noise overlay ──────────────────────────────────────────────

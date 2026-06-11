@@ -10,7 +10,7 @@ export default function Footer({ onOpenLegal }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <div className={styles.left}>
-        © 2026 Roman · Freelancer · Norddeutschland
+        © 2026 <span className={styles.brand}><strong>Prima</strong>flow</span> · Freelancer · Norddeutschland
       </div>
       <div className={styles.right}>
         <button

@@ -1,31 +1,27 @@
 @use "../../../../styles/settings" as s;
 @use "../../../../styles/mixins" as m;
 
-.services {
-  // Padding and sectionHeader are now handled by the Section component
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5px;
-  background: s.$border;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
 
   @include m.respond-to(md) {
     grid-template-columns: 1fr;
   }
 }
 
+.cardWrapper {
+  display: flex;
+}
+
 .card {
-  background: s.$card;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.3s;
-  cursor: auto; // Restored default cursor
+  width: 100%;
+  transition: transform 0.2s ease-in-out;
 
   &:hover {
-    background: s.$card-hover;
+    transform: translateY(-4px);
   }
 }
 
@@ -39,46 +35,13 @@
 
 .cardNumber {
   font-family: s.$font-mono;
-  font-size: 0.65rem;
-  color: s.$muted;
   letter-spacing: s.$ls-2xl;
-  margin-bottom: 2rem;
-}
-
-.cardIcon {
-  font-size: 2rem;
-  margin-bottom: 1.25rem;
-  display: block;
 }
 
 .cardTitle {
-  font-size: s.$fs-2xl;
-  font-weight: s.$fw-bold;
-  margin-bottom: 0.75rem;
+  font-family: s.$font-body;
 }
 
 .cardDesc {
-  font-size: s.$fs-body;
   line-height: s.$lh-body;
-  color: s.$muted;
-  margin-bottom: 1.5rem;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tag {
-  font-family: s.$font-mono;
-  font-size: s.$fs-xs;
-  color: s.$accent;
-  border: 1px solid s.$accent-border;
-  padding: 0.25rem 0.6rem;
-  letter-spacing: s.$ls-md;
-  text-transform: uppercase;
 }

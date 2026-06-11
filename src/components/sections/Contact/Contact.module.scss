@@ -1,106 +1,25 @@
 @use "../../../../styles/settings" as s;
 @use "../../../../styles/mixins" as m;
 
-.contact {
-  // Padding now handled by Section component
-}
-
-.inner {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.contactWrapper {
-  background: s.$card;
-  border: 1px solid s.$border;
-  padding: 2rem;
-}
-
-// NOTE: Headline and Label are currently being styled differently in Section component.
-// We may need to adapt these or override them to maintain the look.
-.headline {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: s.$fw-extrabold;
-  letter-spacing: s.$ls-tight;
-  line-height: s.$lh-heading;
-  margin-bottom: 1.5rem;
+.contactCard {
+  width: 100%;
 }
 
 .sub {
   font-size: s.$fs-lg;
   color: s.$muted;
   line-height: s.$lh-relaxed;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  text-align: left;
 }
 
-.formRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-
-  @include m.respond-to(md) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.formField {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-
-  label {
-    font-family: s.$font-mono;
-    font-size: 0.65rem;
-    color: s.$muted;
-    letter-spacing: s.$ls-xl;
-    text-transform: uppercase;
-  }
-
-  input,
-  textarea,
-  select {
-    background: s.$card;
-    border: 1px solid s.$border;
-    color: s.$text;
-    font-family: s.$font-body;
-    font-size: s.$fs-body;
-    padding: 0.8rem 1rem;
-    outline: none;
-    transition: border-color 0.2s;
-    appearance: none;
-    width: 100%;
-
-    &:focus {
-      border-color: s.$accent;
-    }
-
-    &::placeholder {
-      color: s.$muted;
-    }
-
-    option {
-      background: s.$card;
-    }
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 130px;
-  }
-}
-
-.submitRow {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 0.5rem;
+.label {
+  font-family: s.$font-mono;
+  letter-spacing: s.$ls-xl;
 }
 
 .btnPrimary {
@@ -134,11 +53,11 @@
 }
 
 .success {
-  margin-top: 2rem;
   text-align: center;
+  padding: 2rem;
 
   .successIcon {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     color: s.$accent;
   }

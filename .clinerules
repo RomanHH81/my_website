@@ -1,0 +1,9 @@
+# Project Rules
+
+## Updates
+- [2026-06-11] Rebranding to 'Primaflow'.
+- [2026-06-11] New slogan: 'Primaflow – Komplexe Systeme, einfach gelöst.'
+- [2026-06-11] Updated color scheme to Cyber-Blue with violet and turquoise accents.
+- [2026-06-11] Integrated Radix UI Themes for dark/light mode switching.
+- [2026-06-11] Moved theme toggle to Header and refactored Services/Portfolio cards to Radix UI `Card` for full light/dark mode support.
+- [2026-06-11] Enforced bold 'Prima' and regular 'flow' branding across Header, Hero, and Footer.

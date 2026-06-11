@@ -53,3 +53,12 @@
 .sep {
   color: s.$muted;
 }
+
+.brand {
+  color: s.$text;
+  
+  strong {
+    font-weight: s.$fw-extrabold;
+    color: s.$accent;
+  }
+}

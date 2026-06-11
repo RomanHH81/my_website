@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Section from "@/components/layout/Section/Section";
+import { Card, Text, Flex, Badge, Grid } from "@radix-ui/themes";
 import styles from "./Services.module.scss";
 
 const services = [
@@ -115,25 +116,38 @@ export default function Services() {
         {services.map(({ id, icon, title, desc, tags, wide, delay }) => (
           <article
             key={id}
-            className={`${styles.card} ${wide ? styles.cardWide : ""} reveal`}
+            className={`${styles.cardWrapper} ${wide ? styles.cardWide : ""} reveal`}
             style={{ transitionDelay: `${delay}s` }}
-            data-cursor-hover
           >
-            <div className={styles.cardNumber} aria-hidden="true">
-              {id} /
-            </div>
-            <span className={styles.cardIcon} aria-hidden="true">
-              {icon}
-            </span>
-            <h3 className={styles.cardTitle}>{title}</h3>
-            <p className={styles.cardDesc}>{desc}</p>
-            <ul className={styles.tags} aria-label={`Technologien: ${title}`}>
-              {tags.map((tag) => (
-                <li key={tag} className={styles.tag}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
+            <Card size="3" variant="surface" className={styles.card}>
+              <Flex direction="column" gap="4">
+                <Flex justify="between" align="center">
+                  <Text size="1" color="gray" className={styles.cardNumber}>
+                    {id} /
+                  </Text>
+                  <Text size="6" className={styles.cardIcon}>
+                    {icon}
+                  </Text>
+                </Flex>
+                
+                <Flex direction="column" gap="2">
+                  <Text size="5" weight="bold" as="div" className={styles.cardTitle}>
+                    {title}
+                  </Text>
+                  <Text size="2" color="gray" className={styles.cardDesc}>
+                    {desc}
+                  </Text>
+                </Flex>
+
+                <Flex gap="2" wrap="wrap" className={styles.tags}>
+                  {tags.map((tag) => (
+                    <Badge key={tag} variant="soft" color="blue" size="1">
+                      {tag}
+                    </Badge>
+                  ))}
+                </Flex>
+              </Flex>
+            </Card>
           </article>
         ))}
       </div>

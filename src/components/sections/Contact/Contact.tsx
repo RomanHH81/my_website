@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Section from "@/components/layout/Section/Section";
+import { Card, Text, Flex, Grid, Box, TextField, TextArea, Select, Button } from "@radix-ui/themes";
 import styles from "./Contact.module.scss";
 
 export default function Contact() {
@@ -37,7 +38,7 @@ export default function Contact() {
       className={styles.contact}
     >
       <div ref={sectionRef}>
-        <div className={styles.contactWrapper}>
+        <Card size="4" variant="surface" className={styles.contactCard}>
           <p className={`${styles.sub} reveal`}>
             Du hast ein Projekt, ein Problem oder eine Idee? Schreib mir — ich
             melde mich in der Regel innerhalb von 24 Stunden.
@@ -45,53 +46,41 @@ export default function Contact() {
 
           {!submitted ? (
             <form className={`${styles.form} reveal`} onSubmit={handleSubmit}>
-              <div className={styles.formRow}>
-                <div className={styles.formField}>
-                  <label htmlFor="field-name">Name</label>
-                  <input
-                    id="field-name"
-                    type="text"
-                    placeholder="Max Mustermann"
-                    required
-                    autoComplete="name"
-                  />
-                </div>
-                <div className={styles.formField}>
-                  <label htmlFor="field-email">E-Mail</label>
-                  <input
-                    id="field-email"
-                    type="email"
-                    placeholder="max@beispiel.de"
-                    required
-                    autoComplete="email"
-                  />
-                </div>
-              </div>
-              <div className={styles.formField}>
-                <label htmlFor="field-service">
-                  Ich interessiere mich für …
-                </label>
-                <select id="field-service">
-                  <option value="">Bitte wählen</option>
-                  <option>Workflow-Automatisierung</option>
-                  <option>Web-Entwicklung</option>
-                  <option>Content & Design</option>
-                  <option>Infrastruktur & Hosting</option>
-                  <option>Mehreres / Noch unklar</option>
-                </select>
-              </div>
-              <div className={styles.formField}>
-                <label htmlFor="field-message">Nachricht</label>
-                <textarea
-                  id="field-message"
-                  placeholder="Kurze Beschreibung deines Projekts oder deiner Anfrage …"
-                />
-              </div>
-              <div className={styles.submitRow}>
+              <Grid columns={{ initial: "1", md: "2" }} gap="4" mb="4">
+                <Flex direction="column" gap="1">
+                  <Text size="1" weight="bold" color="gray" className={styles.label}>NAME</Text>
+                  <TextField.Root placeholder="Max Mustermann" required size="3" />
+                </Flex>
+                <Flex direction="column" gap="1">
+                  <Text size="1" weight="bold" color="gray" className={styles.label}>E-MAIL</Text>
+                  <TextField.Root type="email" placeholder="max@beispiel.de" required size="3" />
+                </Flex>
+              </Grid>
+
+              <Flex direction="column" gap="1" mb="4">
+                <Text size="1" weight="bold" color="gray" className={styles.label}>ICH INTERESSIERE MICH FÜR …</Text>
+                <Select.Root size="3">
+                  <Select.Trigger placeholder="Bitte wählen" />
+                  <Select.Content>
+                    <Select.Item value="automation">Workflow-Automatisierung</Select.Item>
+                    <Select.Item value="web">Web-Entwicklung</Select.Item>
+                    <Select.Item value="design">Content & Design</Select.Item>
+                    <Select.Item value="infra">Infrastruktur & Hosting</Select.Item>
+                    <Select.Item value="other">Mehreres / Noch unklar</Select.Item>
+                  </Select.Content>
+                </Select.Root>
+              </Flex>
+
+              <Flex direction="column" gap="1" mb="6">
+                <Text size="1" weight="bold" color="gray" className={styles.label}>NACHRICHT</Text>
+                <TextArea placeholder="Kurze Beschreibung deines Projekts oder deiner Anfrage …" size="3" />
+              </Flex>
+
+              <Flex justify="end">
                 <button type="submit" className={styles.btnPrimary}>
                   Nachricht senden →
                 </button>
-              </div>
+              </Flex>
             </form>
           ) : (
             <div className={styles.success}>
@@ -99,7 +88,7 @@ export default function Contact() {
               <p>Nachricht gesendet — ich melde mich bald!</p>
             </div>
           )}
-        </div>
+        </Card>
       </div>
     </Section>
   );

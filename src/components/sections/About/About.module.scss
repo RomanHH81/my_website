@@ -2,32 +2,17 @@
 @use "../../../../styles/mixins" as m;
 
 .about {
-  // Padding and header structure now handled by Section component
+  // Section padding is handled by the Section component
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: flex-start;
-  background: s.$card;
-  border: 1px solid s.$border;
-  padding: 2rem;
-
-  @include m.respond-to(md) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 1.5rem;
-  }
+.aboutCard {
+  width: 100%;
 }
 
 .text {
-  p {
-    font-size: s.$fs-body;
+  .p {
     line-height: s.$lh-relaxed;
-    color: s.$muted;
-    margin-bottom: 1.25rem;
-
+    
     strong {
       color: s.$text;
       font-weight: s.$fw-semibold;
@@ -112,16 +97,17 @@
 .terminalBody {
   padding: 1.5rem;
   line-height: 2;
+  color: #e8e8f0; // Keep terminal text light
 }
 
 .tPrompt {
   color: s.$accent;
 }
 .tCmd {
-  color: s.$text;
+  color: s.$white;
 }
 .tOutput {
-  color: s.$muted;
+  color: #b0b0c5;
 }
 .tHighlight {
   color: s.$accent2;

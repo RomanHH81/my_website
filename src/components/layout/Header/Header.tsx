@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useTheme } from '../ThemeWrapper';
 import styles from './Header.module.scss';
 
 const navLinks = [
@@ -16,6 +17,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const { appearance, toggleTheme } = useTheme();
 
   const handleLinkClick = () => setIsOpen(false);
 
@@ -25,38 +27,49 @@ export default function Header() {
   return (
     <nav className={styles.nav} aria-label="Hauptnavigation">
       <Link href="/" className={styles.logo}>
-        Roman_.<span className={styles.logoDev}>dev</span>
+        <span className={styles.brandBold}>Prima</span>
+        <span className={styles.brandRegular}>flow</span>
       </Link>
 
-      <ul
-        className={`${styles.navList} ${isOpen ? styles.open : ''}`}
-        id="nav-menu"
-        role="list"
-      >
-        {navLinks.map(({ anchor, label }) => (
-          <li key={anchor}>
-            <a
-              href={getHref(anchor)}
-              className={styles.navLink}
-              onClick={handleLinkClick}
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className={styles.navRight}>
+        <ul
+          className={`${styles.navList} ${isOpen ? styles.open : ''}`}
+          id="nav-menu"
+          role="list"
+        >
+          {navLinks.map(({ anchor, label }) => (
+            <li key={anchor}>
+              <a
+                href={getHref(anchor)}
+                className={styles.navLink}
+                onClick={handleLinkClick}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      <button
-        className={styles.hamburger}
-        aria-controls="nav-menu"
-        aria-expanded={isOpen}
-        aria-label={isOpen ? 'Menü schließen' : 'Menü öffnen'}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
+        <button 
+          onClick={toggleTheme}
+          className={styles.themeToggle}
+          aria-label="Farbschema umschalten"
+        >
+          {appearance === 'dark' ? '☀️' : '🌙'}
+        </button>
+
+        <button
+          className={styles.hamburger}
+          aria-controls="nav-menu"
+          aria-expanded={isOpen}
+          aria-label={isOpen ? 'Menü schließen' : 'Menü öffnen'}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </nav>
   );
 }

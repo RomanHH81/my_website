@@ -45,6 +45,26 @@
   @include m.respond-to(md) {
     font-size: clamp(2.8rem, 12vw, 4rem);
   }
+
+  .brand {
+    font-size: 0.4em;
+    text-transform: uppercase;
+    letter-spacing: s.$ls-2xl;
+    margin-bottom: 1rem;
+    color: s.$muted;
+    display: flex;
+    align-items: center;
+    gap: 0;
+
+    .brandBold {
+      font-weight: s.$fw-extrabold;
+      color: s.$text;
+    }
+
+    .brandRegular {
+      font-weight: s.$fw-regular;
+    }
+  }
 }
 
 .line2 {
@@ -123,23 +143,24 @@
 }
 
 // Stats bar
-.statsBar {
-  position: relative;
-  z-index: 1;
+.statsBarWrapper {
+  background: s.$surface;
   border-top: 1px solid s.$border;
   border-bottom: 1px solid s.$border;
-  display: flex;
-  background: s.$surface;
+  position: relative;
+  z-index: 1;
+}
 
-  @include m.respond-to(md) {
-    flex-direction: column;
-  }
+.statsBar {
+  padding: 0;
 }
 
 .statItem {
-  flex: 1;
-  padding: 1rem 1.5rem;
+  padding: 2.5rem 2rem;
   border-right: 1px solid s.$border;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   &:last-child {
     border-right: none;
@@ -148,21 +169,19 @@
   @include m.respond-to(md) {
     border-right: none;
     border-bottom: 1px solid s.$border;
+    padding: 1.5rem;
   }
 }
 
 .statNumber {
-  font-size: s.$fs-3xl;
-  font-weight: s.$fw-extrabold;
   color: s.$accent;
   letter-spacing: s.$ls-tight;
   line-height: 1;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .statLabel {
   font-family: s.$font-mono;
-  font-size: 0.7rem;
   color: s.$muted;
   letter-spacing: s.$ls-lg;
   text-transform: uppercase;

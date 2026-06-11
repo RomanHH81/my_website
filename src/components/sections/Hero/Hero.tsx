@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Container from "@/components/layout/Container/Container";
+import { Flex, Text, Box, Grid } from "@radix-ui/themes";
 import styles from "./Hero.module.scss";
 
 const stats = [
@@ -38,11 +39,13 @@ export default function Hero() {
             Freelance · Automatisierung · KI · Web
           </div>
           <h1 className={styles.headline} id="hero-heading">
-            Systeme,
+            <div className={styles.brand}>
+              <span className={styles.brandBold}>Prima</span>
+              <span className={styles.brandRegular}>flow</span>
+            </div>
+            Komplexe Systeme,
             <br />
-            <span className={styles.line2}>die einfach</span>
-            <br />
-            <span className={styles.accentWord}>laufen.</span>
+            <span className={styles.accentWord}>einfach gelöst.</span>
           </h1>
           <p className={styles.sub}>
             Automatisierte Workflows, professionelle Websites und smarte
@@ -60,20 +63,26 @@ export default function Hero() {
         </Container>
       </section>
 
-      <Container>
-        <div className={styles.statsBar}>
-          {stats.map(({ number, label, delay }) => (
-            <div
-              key={label}
-              className={`${styles.statItem} reveal`}
-              style={{ transitionDelay: `${delay}s` }}
-            >
-              <div className={styles.statNumber}>{number}</div>
-              <div className={styles.statLabel}>{label}</div>
-            </div>
-          ))}
-        </div>
-      </Container>
+      <div className={styles.statsBarWrapper}>
+        <Container>
+          <Grid columns={{ initial: "1", md: "4" }} className={styles.statsBar}>
+            {stats.map(({ number, label, delay }) => (
+              <Box
+                key={label}
+                className={`${styles.statItem} reveal`}
+                style={{ transitionDelay: `${delay}s` }}
+              >
+                <Text size="8" weight="bold" className={styles.statNumber}>
+                  {number}
+                </Text>
+                <Text size="1" className={styles.statLabel}>
+                  {label}
+                </Text>
+              </Box>
+            ))}
+          </Grid>
+        </Container>
+      </div>
     </div>
   );
 }

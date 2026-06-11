@@ -21,15 +21,32 @@
 }
 
 .logo {
-  font-family: s.$font-mono;
-  font-size: s.$fs-md;
-  color: s.$accent;
-  letter-spacing: s.$ls-2xl;
-  text-transform: uppercase;
+  font-family: s.$font-body;
+  font-size: s.$fs-lg;
+  color: s.$text;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0;
 
-  .logoDev {
+  .brandBold {
+    font-weight: s.$fw-extrabold;
+    color: s.$text;
+  }
+
+  .brandRegular {
+    font-weight: s.$fw-regular;
     color: s.$muted;
+  }
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  @include m.respond-to(md) {
+    gap: 1rem;
   }
 }
 
@@ -72,6 +89,26 @@
 
   @include m.respond-to(md) {
     font-size: 1rem;
+  }
+}
+
+.themeToggle {
+  background: none;
+  border: 1px solid s.$border;
+  color: s.$text;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: s.$accent;
+    transform: scale(1.05);
   }
 }
 

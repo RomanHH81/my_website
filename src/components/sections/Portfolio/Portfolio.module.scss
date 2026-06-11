@@ -1,71 +1,48 @@
 @use "../../../../styles/settings" as s;
 @use "../../../../styles/mixins" as m;
 
-.portfolio {
-  // Padding and header structure now handled by Section component
-}
-
-.sectionSub {
-  font-size: s.$fs-lg;
-  color: s.$muted;
-  line-height: s.$lh-relaxed;
-  margin-bottom: 1.5rem;
-  max-width: 600px;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5px;
-  background: s.$border;
-  border: 1px solid s.$border;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
 
   @include m.respond-to(md) {
     grid-template-columns: 1fr;
   }
 }
 
-.card {
-  background: s.$card;
-  padding: 2rem;
+.cardWrapper {
   display: flex;
-  flex-direction: column;
-  transition: background 0.3s;
+}
+
+.card {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 
   &:hover {
-    background: s.$card-hover;
+    transform: translateY(-4px);
   }
 }
 
-.projectHeader {
-  margin-bottom: 2rem;
-}
-
 .title {
-  font-size: s.$fs-2xl;
-  font-weight: s.$fw-bold;
-  margin-bottom: 0.75rem;
-  color: s.$text;
+  font-family: s.$font-body;
 }
 
 .subtitle {
-  font-size: s.$fs-body;
   line-height: s.$lh-body;
-  color: s.$muted;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .previewContainer {
   position: relative;
-  cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
-  margin-top: auto;
   border: 1px solid s.$border;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    border-color: rgba(s.$accent, 0.3);
     .previewOverlay {
       opacity: 1;
     }
