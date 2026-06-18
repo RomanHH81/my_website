@@ -45,6 +45,24 @@ body::after {
   outline-offset: 3px;
 }
 
+// ── Skip link ──────────────────────────────────────────────────
+// Hidden off-screen by default; only revealed for keyboard users
+// tabbing through the page (WCAG bypass-blocks requirement).
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background-color: s.$accent;
+  color: #fff;
+  transition: top 0.2s ease;
+
+  &:focus-visible {
+    top: 0;
+  }
+}
+
 // ── Scroll reveal ──────────────────────────────────────────────
 .reveal {
   opacity: 0;
