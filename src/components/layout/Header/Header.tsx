@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { Logo } from '@/components/ui/Logo/Logo';
 import { useTheme } from '../ThemeWrapper';
 import styles from './Header.module.scss';
 
@@ -27,8 +28,7 @@ export default function Header() {
   return (
     <nav className={styles.nav} aria-label="Hauptnavigation">
       <Link href="/" className={styles.logoLink}>
-        <span className={styles.brandBold}>PRIMA</span>
-        <span className={styles.brandRegular}>FLOW</span>
+        <Logo className={styles.logoImg} />
       </Link>
 
       <div className={styles.navRight}>
