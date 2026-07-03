@@ -25,6 +25,12 @@ const allProjects: Project[] = [
   },
   {
     id: "03",
+    title: "Immobilien-Portfolio",
+    desc: "Übersichtliche Plattform zur Präsentation und Verwaltung von Immobilienobjekten.",
+    url: "https://immobilien-portfolio.vercel.app/de",
+  },
+  {
+    id: "04",
     title: "Dein Projekt hier?",
     desc: "Ich freue mich darauf, gemeinsam mit dir die nächste digitale Lösung zu entwickeln. Lass uns sprechen!",
     url: "#",

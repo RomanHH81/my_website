@@ -5,6 +5,7 @@ import { Card, Text, Flex, Inset, Box } from "@radix-ui/themes";
 import styles from "./Portfolio.module.scss";
 import PVPreview from "@/components/ui/PVPreview/PVPreview";
 import FreizeitPreview from "@/components/ui/FreizeitPreview/FreizeitPreview";
+import ImmobilienPreview from "@/components/ui/ImmobilienPreview/ImmobilienPreview";
 
 type Project = {
   id: string;
@@ -17,6 +18,7 @@ type Project = {
 const componentMap: Record<string, React.ReactNode> = {
   "01": <PVPreview />,
   "02": <FreizeitPreview />,
+  "03": <ImmobilienPreview />,
 };
 
 export default function PortfolioGrid({ projects }: { projects: Project[] }) {
