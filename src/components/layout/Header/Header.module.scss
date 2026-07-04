@@ -113,22 +113,28 @@
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
+  align-items: center;
+  gap: 5px;
   background: none;
-  border: none;
+  border: 1px solid s.$border;
   cursor: pointer;
   // min 44×44px touch target for iOS
   min-width: 44px;
   min-height: 44px;
   padding: 10px;
+  border-radius: 8px;
 
   @include m.respond-to(md) {
     display: flex;
   }
 
+  &:hover {
+    border-color: s.$accent;
+  }
+
   span {
     display: block;
-    width: 22px;
+    width: 18px; // shorter so X stays inside 44px button when rotated
     height: 2px;
     background: s.$accent;
     transition:
@@ -139,14 +145,14 @@
 
   &[aria-expanded="true"] {
     span:nth-child(1) {
-      transform: rotate(45deg) translate(0, 8px);
+      transform: rotate(45deg) translate(4px, 4px);
     }
     span:nth-child(2) {
       opacity: 0;
       transform: scaleX(0);
     }
     span:nth-child(3) {
-      transform: rotate(-45deg) translate(0, -8px);
+      transform: rotate(-45deg) translate(4px, -4px);
     }
   }
 }
