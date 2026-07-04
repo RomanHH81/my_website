@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer/Footer";
 import LegalModal from "@/components/ui/LegalModal/LegalModal";
 import CookieBanner from "@/components/ui/CookieBanner/CookieBanner";
 import CookieSettings from "@/components/ui/CookieSettings/CookieSettings";
+import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop";
 
 export default function MainLayout({
   children,
@@ -31,6 +32,7 @@ export default function MainLayout({
       </a>
       <Header />
       <main id="main">{children}</main>
+      <ScrollToTop />
       <Footer onOpenLegal={setLegalType} />
       <CookieBanner
         onOpenLegal={setLegalType}

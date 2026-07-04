@@ -1,0 +1,32 @@
+@use "../../../../styles/settings" as s;
+@use "../../../../styles/mixins" as m;
+
+.btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid s.$border;
+  background: s.$bg;
+  color: s.$accent;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    border-color: s.$accent;
+    transform: translateY(-2px);
+  }
+
+  @include m.respond-to(md) {
+    bottom: 1.5rem;
+    right: 1rem;
+  }
+}
