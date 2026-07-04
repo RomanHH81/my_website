@@ -69,6 +69,42 @@ export default function Header() {
           <span />
           <span />
         </button>
+
+        {/* Mobile menu overlay */}
+        <div
+          className={`${styles.mobileMenu} ${isOpen ? styles.mobileMenuOpen : ''}`}
+          role="dialog"
+          aria-label="Navigation"
+          aria-modal="true"
+        >
+          <button
+            className={styles.closeBtn}
+            onClick={() => setIsOpen(false)}
+            aria-label="Menü schließen"
+          >
+            ✕
+          </button>
+          <ul className={styles.mobileNavList} role="list">
+            {navLinks.map(({ anchor, label }) => (
+              <li key={anchor}>
+                <a
+                  href={getHref(anchor)}
+                  className={styles.navLink}
+                  onClick={handleLinkClick}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={toggleTheme}
+            className={styles.mobileThemeToggle}
+            aria-label="Farbschema umschalten"
+          >
+            {appearance === 'dark' ? '☀️' : '🌙'}
+          </button>
+        </div>
       </div>
     </nav>
   );
