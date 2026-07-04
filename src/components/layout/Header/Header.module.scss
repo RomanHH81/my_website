@@ -128,10 +128,6 @@
     display: flex;
   }
 
-  &:hover {
-    border-color: s.$accent;
-  }
-
   span {
     display: block;
     width: 18px; // shorter so X stays inside 44px button when rotated
@@ -144,6 +140,7 @@
   }
 
   &[aria-expanded="true"] {
+    border-color: s.$accent;
     span:nth-child(1) {
       transform: rotate(45deg) translate(4px, 4px);
     }

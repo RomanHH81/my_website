@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <nav className={styles.nav} aria-label="Hauptnavigation">
-      <Link href="/" className={styles.logoLink}>
+      <Link href="/" className={styles.logoLink} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
         <Logo className={styles.logoImg} />
       </Link>
 
