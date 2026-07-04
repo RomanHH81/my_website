@@ -70,12 +70,20 @@ export default function Datenschutz() {
         </div>
 
         <div className={styles.section}>
-          <div className={styles.sectionTitle}>4. Keine Cookies &amp; kein Tracking</div>
+          <div className={styles.sectionTitle}>4. Lokale Datenspeicherung (localStorage)</div>
           <div className={styles.block}>
             <p>
-              Diese Website setzt <strong>keine Tracking-Cookies</strong> ein und verwendet{' '}
-              <strong>keine Analyse- oder Werbedienste</strong> Dritter (kein Google Analytics, kein Facebook Pixel
-              o. ä.). Es werden keine Daten an externe Anbieter übertragen.
+              Diese Website verwendet <strong>localStorage</strong> für Einstellungen, die auf deinem Gerät
+              verbleiben und nicht an externe Server übertragen werden:
+            </p>
+            <p>
+              <strong>Theme:</strong> Deine Auswahl zwischen Hell/Dunkel-Modus.<br />
+              <strong>cookie-consent:</strong> Deine getroffene Auswahl im Cookie-Banner.
+            </p>
+            <p>
+              Es werden <strong>keine Tracking-Cookies</strong> gesetzt und{' '}
+              <strong>keine Analyse- oder Werbedienste</strong> Dritter verwendet (kein Google Analytics,
+              kein Facebook Pixel o. ä.). Es werden keine Daten an externe Anbieter übertragen.
             </p>
             <p>
               Sämtliche eingesetzten Schriften und Ressourcen werden <strong>lokal ausgeliefert</strong> — es

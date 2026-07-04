@@ -38,10 +38,9 @@ export default function CookieBanner({
     <div className={styles.banner} role="alert">
       <div className={styles.inner}>
         <p className={styles.text}>
-          Diese Website verwendet Cookies und ähnliche Technologien, um die
-          Nutzererfahrung zu verbessern. Technisch notwendige Cookies sind immer
-          aktiv. Marketing- und Analyse-Cookies werden nur mit deiner Zustimmung
-          gesetzt. Mehr erfährst du in der{" "}
+          Diese Website speichert Einstellungen lokal auf deinem Gerät
+          (localStorage) — z. B. deine Theme-Wahl. Externe Tracking-Cookies
+          oder Analyse-Dienste gibt es nicht. Mehr erfährst du in der{" "}
           <a
             href="#"
             onClick={(e) => {
