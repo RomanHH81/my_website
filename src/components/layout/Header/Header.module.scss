@@ -111,10 +111,7 @@
 
 .hamburger {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
+  position: relative;
   background: none;
   border: 1px solid s.$border;
   cursor: pointer;
@@ -128,28 +125,37 @@
     display: flex;
   }
 
+  // Each bar is centered on the button via top/left 50% + translate(-50%,-50%),
+  // then offset vertically for the stacked "closed" look. Keeping that centering
+  // translate in the "open" transform too means rotate() pivots on the button's
+  // true center, so the X is always symmetric regardless of button size.
   span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
-    width: 18px; // shorter so X stays inside 44px button when rotated
+    width: 18px;
     height: 2px;
     background: s.$accent;
-    transition:
-      transform 0.3s,
-      opacity 0.2s;
+    transition: transform 0.3s, opacity 0.2s;
     border-radius: 1px;
+
+    &:nth-child(1) { transform: translate(-50%, calc(-50% - 7px)); }
+    &:nth-child(2) { transform: translate(-50%, -50%); }
+    &:nth-child(3) { transform: translate(-50%, calc(-50% + 7px)); }
   }
 
   &[aria-expanded="true"] {
     border-color: s.$accent;
     span:nth-child(1) {
-      transform: rotate(45deg) translate(4px, 4px);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
     span:nth-child(2) {
       opacity: 0;
-      transform: scaleX(0);
+      transform: translate(-50%, -50%) scaleX(0);
     }
     span:nth-child(3) {
-      transform: rotate(-45deg) translate(4px, -4px);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
 }
