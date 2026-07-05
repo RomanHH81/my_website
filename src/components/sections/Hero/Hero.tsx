@@ -64,24 +64,22 @@ export default function Hero() {
       </section>
 
       <div className={styles.statsBarWrapper}>
-        <Container>
-          <Grid columns={{ initial: "1", md: "4" }} className={styles.statsBar}>
-            {stats.map(({ number, label, delay }) => (
-              <Box
-                key={label}
-                className={`${styles.statItem} reveal`}
-                style={{ transitionDelay: `${delay}s` }}
-              >
-                <Text size="8" weight="bold" className={styles.statNumber}>
-                  {number}
-                </Text>
-                <Text size="1" className={styles.statLabel}>
-                  {label}
-                </Text>
-              </Box>
-            ))}
-          </Grid>
-        </Container>
+        <Grid columns={{ initial: "1", md: "4" }} className={styles.statsBar}>
+          {stats.map(({ number, label, delay }) => (
+            <Box
+              key={label}
+              className={`${styles.statItem} reveal`}
+              style={{ transitionDelay: `${delay}s` }}
+            >
+              <Text size="8" weight="bold" className={styles.statNumber}>
+                {number}
+              </Text>
+              <Text size="1" className={styles.statLabel}>
+                {label}
+              </Text>
+            </Box>
+          ))}
+        </Grid>
       </div>
     </div>
   );

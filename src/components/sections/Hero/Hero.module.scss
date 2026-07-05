@@ -144,6 +144,8 @@
 
 // Stats bar
 .statsBarWrapper {
+  width: min(90%, 1600px);
+  margin: 0 auto;
   background: s.$surface;
   border-top: 1px solid s.$border;
   border-bottom: 1px solid s.$border;
