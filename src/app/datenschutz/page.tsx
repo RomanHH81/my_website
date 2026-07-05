@@ -31,9 +31,10 @@ export default function Datenschutz() {
           <div className={styles.sectionTitle}>2. Hosting &amp; Server-Log-Dateien</div>
           <div className={styles.block}>
             <p>
-              Diese Website wird auf einem <strong>selbst betriebenen Server</strong> (Self-hosted) gehostet.
-              Der Serverbetreiber erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien,
-              die dein Browser automatisch übermittelt.
+              Diese Website wird auf einem <strong>VPS-Server (Virtual Private Server)</strong> eines
+              professionellen Hosting-Anbieters mit Rechenzentrum in Deutschland gehostet.
+              Der Serverbetreiber erhebt und speichert automatisch Informationen in sogenannten
+              Server-Log-Dateien, die dein Browser automatisch übermittelt.
             </p>
             <p>Dies sind:</p>
             <p>
