@@ -11,11 +11,11 @@ export default function PVPreview() {
           <span className={styles.dot}></span>
           <span className={styles.dot}></span>
         </div>
-        <div className={styles.addressBar}>pv-rechner.roman.dev</div>
+        <div className={styles.addressBar}>pv-rechner.primaflow.de</div>
       </div>
       <div className={styles.iframeWrapper}>
         <iframe 
-          src="https://pv-rechner-h6s3.vercel.app/dashboard" 
+          src="https://pv-rechner.primaflow.de/dashboard"
           title="PV Rechner Preview"
           className={styles.iframe}
           loading="lazy"

@@ -15,7 +15,7 @@ const allProjects: Project[] = [
     id: "01",
     title: "PV Rechner",
     desc: "Komplexer Rechner für PV-Anlagen: Visualisierung von Amortisation, Eigenverbrauch und CO2-Ersparnis.",
-    url: "https://pv-rechner-h6s3.vercel.app/dashboard",
+    url: "https://pv-rechner.primaflow.de/dashboard",
   },
   {
     id: "02",
