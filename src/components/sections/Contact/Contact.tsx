@@ -89,17 +89,23 @@ export default function Contact() {
     >
       <div ref={sectionRef}>
         <Card size="4" variant="surface" className={styles.contactCard}>
-          <p className={`${styles.sub} reveal`}>
-            Du hast ein Projekt, ein Problem oder eine Idee? Schreib mir — ich
-            melde mich in der Regel innerhalb von 24 Stunden.
-          </p>
+          {!submitted && (
+            <p className={`${styles.sub} reveal`}>
+              Du hast ein Projekt, ein Problem oder eine Idee? Schreib mir — ich
+              melde mich in der Regel innerhalb von 24 Stunden.
+            </p>
+          )}
 
           {submitted ? (
-            <div className={`${styles.success} reveal`}>
+            // Kein `reveal` hier: der IntersectionObserver läuft nur beim Mount und
+            // würde dieses nachträglich gerenderte Element nie sichtbar schalten.
+            <div className={styles.success}>
               <div className={styles.successIcon}>✓</div>
-              <p>Nachricht gesendet — ich melde mich bald!</p>
+              <p>Danke — deine Nachricht ist angekommen!</p>
               <p className={styles.successHint}>
-                Du bekommst gleich eine Bestätigung per E-Mail.
+                Du bekommst in den nächsten Minuten eine Bestätigung per E-Mail.
+                Ich schaue mir deine Anfrage persönlich an und melde mich in der
+                Regel innerhalb von 24 Stunden bei dir.
               </p>
             </div>
           ) : (
