@@ -4,6 +4,8 @@ services:
       context: .
     container_name: primaflow-website
     restart: unless-stopped
+    environment:
+      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
     networks:
       - proxy-net
 
