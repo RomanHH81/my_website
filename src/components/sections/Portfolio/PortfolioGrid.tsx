@@ -6,6 +6,7 @@ import styles from "./Portfolio.module.scss";
 import PVPreview from "@/components/ui/PVPreview/PVPreview";
 import FreizeitPreview from "@/components/ui/FreizeitPreview/FreizeitPreview";
 import ImmobilienPreview from "@/components/ui/ImmobilienPreview/ImmobilienPreview";
+import HandwerkPreview from "@/components/ui/HandwerkPreview/HandwerkPreview";
 
 type Project = {
   id: string;
@@ -19,6 +20,7 @@ const componentMap: Record<string, React.ReactNode> = {
   "01": <PVPreview />,
   "02": <FreizeitPreview />,
   "03": <ImmobilienPreview />,
+  "04": <HandwerkPreview />,
 };
 
 export default function PortfolioGrid({ projects }: { projects: Project[] }) {
