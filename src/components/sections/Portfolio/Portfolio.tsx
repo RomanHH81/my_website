@@ -33,7 +33,7 @@ const allProjects: Project[] = [
     id: "04",
     title: "Handwerker-Website",
     desc: "Moderne Website-Lösung für Handwerksbetriebe: Leistungen, Referenzen und Kontaktanfragen auf einen Blick.",
-    url: "https://handwerk.primaflow.de",
+    url: "https://handwerk.primaflow.de/showcase",
   },
   {
     id: "05",
