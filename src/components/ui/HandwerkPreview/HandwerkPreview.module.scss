@@ -60,4 +60,10 @@
 .image {
   object-fit: cover;
   object-position: top;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
 }
