@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { Card, Text, Flex, Inset, Box } from "@radix-ui/themes";
 import styles from "./Portfolio.module.scss";
+import MietfuchsPreview from "@/components/ui/MietfuchsPreview/MietfuchsPreview";
 import PVPreview from "@/components/ui/PVPreview/PVPreview";
 import FreizeitPreview from "@/components/ui/FreizeitPreview/FreizeitPreview";
 import ImmobilienPreview from "@/components/ui/ImmobilienPreview/ImmobilienPreview";
@@ -21,6 +22,7 @@ const componentMap: Record<string, React.ReactNode> = {
   "02": <FreizeitPreview />,
   "03": <ImmobilienPreview />,
   "04": <HandwerkPreview />,
+  "05": <MietfuchsPreview />,
 };
 
 export default function PortfolioGrid({ projects }: { projects: Project[] }) {

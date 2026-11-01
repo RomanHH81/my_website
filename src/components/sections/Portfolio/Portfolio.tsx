@@ -37,6 +37,12 @@ const allProjects: Project[] = [
   },
   {
     id: "05",
+    title: "MietFuchs",
+    desc: "Interaktive Verleih-Demo mit Mietfinder, Verfügbarkeitsprüfung und Mietanfragen. Inhalte und Anfragen werden zentral im CMS verwaltet.",
+    url: "https://mietfuchs.primaflow.de/de",
+  },
+  {
+    id: "06",
     title: "Dein Projekt hier?",
     desc: "Ich freue mich darauf, gemeinsam mit dir die nächste digitale Lösung zu entwickeln. Lass uns sprechen!",
     url: "#",
