@@ -43,6 +43,12 @@ const allProjects: Project[] = [
   },
   {
     id: "06",
+    title: "Strandgut",
+    desc: "Eine Direktbuchungs-Demo für Ferienunterkünfte an der Ostsee mit Verfügbarkeitsprüfung und Demo-Kasse.",
+    url: "https://strandgut.primaflow.de/",
+  },
+  {
+    id: "07",
     title: "Dein Projekt hier?",
     desc: "Ich freue mich darauf, gemeinsam mit dir die nächste digitale Lösung zu entwickeln. Lass uns sprechen!",
     url: "#",

@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
 import { Card, Text, Flex, Inset, Box } from "@radix-ui/themes";
 import styles from "./Portfolio.module.scss";
 import MietfuchsPreview from "@/components/ui/MietfuchsPreview/MietfuchsPreview";
+import ThemedProjectPreview from "@/components/ui/ThemedProjectPreview/ThemedProjectPreview";
+import strandgutDark from "../../../../public/portfolio/strandgut-dark.jpg";
+import strandgutLight from "../../../../public/portfolio/strandgut-light.jpg";
 import PVPreview from "@/components/ui/PVPreview/PVPreview";
 import FreizeitPreview from "@/components/ui/FreizeitPreview/FreizeitPreview";
 import ImmobilienPreview from "@/components/ui/ImmobilienPreview/ImmobilienPreview";
@@ -23,6 +26,7 @@ const componentMap: Record<string, React.ReactNode> = {
   "03": <ImmobilienPreview />,
   "04": <HandwerkPreview />,
   "05": <MietfuchsPreview />,
+  "06": <ThemedProjectPreview title="Strandgut" domain="strandgut.primaflow.de" light={strandgutLight} dark={strandgutDark} />,
 };
 
 export default function PortfolioGrid({ projects }: { projects: Project[] }) {
