@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
 
 // Payload-Shape (muss zu src/components/sections/Contact/Contact.tsx passen
 // und zu n8n/workflows/lead-handling.json).
@@ -7,12 +8,15 @@ type ContactPayload = {
   email: string;
   interest: string; // automation | web | design | infra | other
   message: string;
+  // Honeypot: fuer Menschen unsichtbares Feld, muss leer bleiben.
+  // Bots, die alle Felder eines Formulars ausfuellen, tappen hier rein.
+  website?: string;
 };
 
 // Minimale Validierung — die ausführliche Datenkontrolle (Spam-Schutz,
-// Rate-Limiting, Recaptcha) gehört in einen späteren Schritt. Hier
-// nur "ist da ein Body, hat er die erwarteten Felder, sehen die Strings
-// nach echten Werten aus?" Sonst lassen wir n8n die harte Arbeit machen.
+// Recaptcha) gehört in einen späteren Schritt. Hier nur "ist da ein
+// Body, hat er die erwarteten Felder, sehen die Strings nach echten
+// Werten aus?" Sonst lassen wir n8n die harte Arbeit machen.
 function isValidPayload(value: unknown): value is ContactPayload {
   if (!value || typeof value !== "object") return false;
   const v = value as Record<string, unknown>;
@@ -20,10 +24,26 @@ function isValidPayload(value: unknown): value is ContactPayload {
   if (typeof v.email !== "string" || !/.+@.+\..+/.test(v.email)) return false;
   if (typeof v.interest !== "string" || v.interest.length === 0) return false;
   if (typeof v.message !== "string" || v.message.trim().length < 5) return false;
+  if (v.website !== undefined && typeof v.website !== "string") return false;
   return true;
 }
 
+// Max. 5 Submits pro IP und 10 Minuten. Reicht für echte Nutzer locker,
+// bremst aber einen simplen Bot-Flood (z. B. 1000 Requests in Sekunden)
+// sofort auf ein harmloses Niveau statt 1000 DB-Zeilen + 2000 Mails.
+const RATE_LIMIT = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
 export async function POST(request: Request) {
+  // 0. Rate-Limit pro Client-IP
+  const ip = getClientIp(request);
+  if (!checkRateLimit(`contact:${ip}`, RATE_LIMIT, RATE_LIMIT_WINDOW_MS)) {
+    return NextResponse.json(
+      { error: "Zu viele Anfragen — bitte später erneut versuchen." },
+      { status: 429 },
+    );
+  }
+
   // 1. Body parsen
   let body: unknown;
   try {
@@ -41,6 +61,14 @@ export async function POST(request: Request) {
       { error: "Pflichtfelder fehlen oder sind ungültig" },
       { status: 422 },
     );
+  }
+
+  // 2b. Honeypot: Feld ausgefüllt → vermutlich ein Bot. Wir tun so, als
+  // hätte alles geklappt (kein Hinweis an den Bot, dass er aufgeflogen ist),
+  // leiten aber nichts an n8n weiter.
+  if (body.website && body.website.trim().length > 0) {
+    console.warn("[contact] Honeypot ausgelöst — Lead verworfen.");
+    return NextResponse.json({ message: "Lead weitergeleitet" });
   }
 
   // 3. Webhook-URL vorhanden?

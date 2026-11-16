@@ -13,6 +13,7 @@ type ContactPayload = {
   email: string;
   interest: string; // automation | web | design | infra | other
   message: string;
+  website: string; // Honeypot — muss leer bleiben, fuer Menschen unsichtbar
 };
 
 const initialState: ContactPayload = {
@@ -20,6 +21,7 @@ const initialState: ContactPayload = {
   email: "",
   interest: "",
   message: "",
+  website: "",
 };
 
 export default function Contact() {
@@ -110,6 +112,19 @@ export default function Contact() {
             </div>
           ) : (
             <form className={`${styles.form} reveal`} onSubmit={handleSubmit} noValidate>
+              {/* Honeypot: fuer Menschen unsichtbar (off-screen, nicht display:none,
+                  damit simple Bot-Checks es trotzdem ausfuellen), fuer Screenreader
+                  per aria-hidden ausgeblendet. */}
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={form.website}
+                onChange={(e) => update("website", e.target.value)}
+                style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
+              />
               <Grid columns={{ initial: "1", md: "2" }} gap="4" mb="4">
                 <Flex direction="column" gap="1">
                   <Text size="1" weight="bold" color="gray" className={styles.label}>NAME</Text>
