@@ -12,9 +12,16 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "primaflow-lead",
+        "authentication": "headerAuth",
         "responseMode": "lastNode",
         "responseData": "allEntries",
         "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "primaflow-webhook-secret",
+          "name": "Primaflow Webhook Secret"
+        }
       }
     },
     {

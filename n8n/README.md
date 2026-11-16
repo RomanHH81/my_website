@@ -111,15 +111,16 @@ Wenn alles passt:
 - Du bekommst eine Mail an `info@primaflow.de`
 - `test@beispiel.de` bekommt die Auto-Reply
 
-## 5. Webhook absichern (TODO, Phase 2)
+## 5. Webhook absichern
 
-Aktuell ist der Webhook **offen** — wer die URL kennt, kann beliebige
-Payloads reinschicken. Für die Demo-Phase OK, für Produktion solltest
-du mindestens einen der folgenden Schritte ergänzen:
+Der Webhook-Node verlangt **Header Auth**. Nach dem Import in n8n ein
+Credential vom Typ „Header Auth" mit dem Namen `Primaflow Webhook Secret`
+anlegen (Name: `X-Webhook-Secret`, Value: derselbe Wert wie
+`N8N_WEBHOOK_SECRET` der Website) und im Webhook-Node auswählen. Ohne
+dieses Credential bleibt der Webhook offen — die URL steht in diesem
+öffentlichen Repo, und der Workflow verschickt Mails an beliebige
+Adressen. Zusätzlich möglich:
 
-- **Shared Secret im Header:** API-Route und Webhook-Node einigen sich
-  auf einen `X-Webhook-Secret`-Header, der per Env-Var in beiden
-  Systemen gesetzt wird
 - **IP-Whitelist im Reverse-Proxy:** n8n.primaflow.de ist nur per
   Vercel-IP-Range erreichbar (in Nginx Proxy Manager konfigurierbar)
 - **Captcha im Formular:** hCaptcha oder Cloudflare Turnstile vor
