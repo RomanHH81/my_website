@@ -45,6 +45,7 @@ export async function POST(request: Request) {
 
   // 3. Webhook-URL vorhanden?
   const webhookUrl = process.env.N8N_WEBHOOK_URL;
+  const webhookSecret = process.env.N8N_WEBHOOK_SECRET;
   if (!webhookUrl) {
     // In Dev ohne gesetzte Env-Var: still loggen statt 500. So blockieren
     // wir das Formular nicht, falls jemand die Website ohne n8n testet.
@@ -65,7 +66,14 @@ export async function POST(request: Request) {
   try {
     const n8nRes = await fetch(webhookUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        // Der n8n-Webhook liegt bewusst offen (Authelia-Bypass für /webhook/*,
+        // s. n8n/README.md), daher prüft n8n selbst per Header Auth, ob der
+        // Aufrufer dieses Secret kennt. Ohne gesetzten Wert bleibt der Header
+        // einfach weg — n8n lehnt den Request dann ab.
+        ...(webhookSecret ? { "X-Webhook-Secret": webhookSecret } : {}),
+      },
       body: JSON.stringify({
         // Reihenfolge/Label passen zu n8n/workflows/lead-handling.json
         name: body.name.trim(),
