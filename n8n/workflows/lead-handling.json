@@ -49,9 +49,9 @@
       "position": [720, 320],
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO leads (name, email, interest, message, source, submitted_at, user_agent, referer) VALUES ({{ $json.name }}, {{ $json.email }}, {{ $json.interest }}, {{ $json.message }}, {{ $json.source }}, {{ $json.submittedAt }}, {{ $json.userAgent }}, {{ $json.referer }}) RETURNING id;",
+        "query": "INSERT INTO leads (name, email, interest, message, source, submitted_at, user_agent, referer) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id;",
         "options": {
-          "queryReplacement": "={{ $json }}"
+          "queryReplacement": "={{ $json.name }}, {{ $json.email }}, {{ $json.interest }}, {{ $json.message }}, {{ $json.source }}, {{ $json.submittedAt }}, {{ $json.userAgent }}, {{ $json.referer }}"
         }
       },
       "credentials": {
