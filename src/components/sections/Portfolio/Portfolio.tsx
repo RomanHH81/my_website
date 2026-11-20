@@ -42,6 +42,12 @@ const allProjects: Project[] = [
     url: "https://mietfuchs.primaflow.de/",
   },
   {
+    id: "08",
+    title: "Südhang Solar",
+    desc: "Eine Website-Demo für Solarbetriebe mit PV-Rechner, PDF-Ergebnis und Anfrageverwaltung im CMS.",
+    url: "https://suedhang.primaflow.de/showcase",
+  },
+  {
     id: "06",
     title: "Strandgut",
     desc: "Eine Direktbuchungs-Demo für Ferienunterkünfte an der Ostsee mit Verfügbarkeitsprüfung und Demo-Kasse.",
